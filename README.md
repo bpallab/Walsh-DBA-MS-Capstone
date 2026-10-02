@@ -30,7 +30,7 @@ Raw data is **not** stored in this repository; `notebooks/01_data_acquisition_an
 
 ## How to reproduce
 1. Open a notebook in Google Colab (File → Open notebook → GitHub → `bpallab/Walsh-DBA-MS-Capstone`).
-2. Run all cells. Notebook 01 clones this repo, installs `requirements.txt`, mounts Google Drive and stores raw data under `MyDrive/Walsh DBA/QM640 Capstone/data`.
+2. Run all cells. Notebook 01 clones this repo, installs `requirements.txt`, mounts Google Drive and stores raw data under `MyDrive/Walsh DBA/Doctoral Research/QM640/Data`.
 
 | Notebook | Purpose | Status |
 |---|---|---|
