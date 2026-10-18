@@ -43,17 +43,15 @@ The study needs **real** enterprise IT service data (not synthetic) that covers 
 
 **Limitation:** an engineering issue tracker, not an end-user service desk.
 
-## Full data vs. samples in this repository
-- **Full data** stays with the original publishers and is downloaded by `notebooks/01_data_acquisition_and_profile.ipynb`. It is not redistributed here.
-- **Samples** (`data/samples/`): cleaned random extracts, 500 cases per dataset with a fixed random seed, so readers can see real records. Person-level fields are removed and free text is screened for e-mail addresses, phone numbers and IP addresses.
-
-| Sample | File | Status |
+## Data in this repository
+| Dataset | Location | Content |
 |---|---|---|
-| Rabobank incidents | [rabobank_incident_sample.csv]() | to be added |
-| Rabobank changes | [rabobank_change_sample.csv]() | to be added |
-| ServiceNow incidents | [servicenow_sample.csv]() | to be added |
-| Jira issues | [jira_sample.csv]() | to be added |
-| Sampling and cleaning notes | [SAMPLE_NOTES.md]() | to be added |
+| ServiceNow | `data/raw/servicenow/` | Original zip from UCI (unchanged) |
+| Rabobank BPI 2014 | `data/raw/bpi2014/` | Detail_Incident, Detail_Interaction, Detail_Incident_Activity, Detail_Change (unchanged; never open in a spreadsheet program, which rewrites dates) |
+| Jira (subset) | not committed (size) | Created by `notebooks/02_jira_subset.ipynb` from the Zenodo archive |
+| Processed | `data/processed/` | `servicenow_incidents.parquet`, `rabobank_incidents.parquet`, `testset_*.csv` (ids of the 385-ticket held-out test sets) |
+
+All data is public and already anonymised by its publishers; no additional personal data is added.
 
 ## Sources and licences
 | Dataset | Citation | Licence |

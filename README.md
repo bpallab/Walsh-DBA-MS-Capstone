@@ -26,34 +26,33 @@ A cost–accuracy comparison of traditional machine learning, small language mod
 | Rabobank ITSM log, BPI Challenge 2014 | [4TU.ResearchData](https://data.4tu.nl/collections/_/5065469/1) | see 4TU record |
 | The Public Jira Dataset v7 (2.7M issues, anonymised) | [Zenodo 15719919](https://zenodo.org/records/15719919) | CC BY 4.0 |
 
-Raw data is **not** stored in this repository; `notebooks/01_data_acquisition_and_profile.ipynb` downloads it. See [`data/README.md`](data/README.md) and the [data dictionary](data/data_dictionary.md).
+The ServiceNow and Rabobank files are included in full under `data/raw/` (both public). The 5.8 GB Jira archive is too large for GitHub; `notebooks/02_jira_subset.ipynb` downloads it from Zenodo and extracts the subset used. See [`data/README.md`](data/README.md) and the [data dictionary](data/data_dictionary.md).
 
 ## How to reproduce
 1. Open a notebook in Google Colab (File → Open notebook → GitHub → `bpallab/Walsh-DBA-MS-Capstone`).
-2. Run all cells. Notebook 01 clones this repo, installs `requirements.txt`, mounts Google Drive and stores raw data under `MyDrive/Walsh DBA/Doctoral Research/QM640/Data`.
+2. Run all cells. Notebooks mount Google Drive and read/write `MyDrive/Walsh DBA/Doctoral Research/QM640/Data` (copy `data/raw/` there first, or let notebook 01 download ServiceNow).
 
 | Notebook | Purpose | Status |
 |---|---|---|
-| 00_sample_size | Power / confidence-interval calculations (Table 4) | ✅ |
-| 01_data_acquisition_and_profile | Download, clean, profile; friction and time-to-action measures | ✅ |
-| 02_rq1_model_comparison | Train/run instruments on the 385-ticket test set | planned (weeks 4–5) |
-| 03_rq2_routing | Cascade thresholds, cost analysis, risk–coverage | planned (week 6) |
-| 04_rq3_context | Instrument × context experiment | planned (week 7) |
-| 05_rq4_replay_compiler | Month-by-month replay with rule compiler | planned (weeks 8–9) |
-| 06_allocation_tree | CART allocation decision tree | planned (week 9) |
+| 00_sample_size | Power / confidence-interval calculations | ✅ |
+| 01_data_profile | Load, clean, profile; data dictionary, cleaning log, EDA figures and insights | ✅ |
+| 02_jira_subset | Download the Jira dump and extract Apache, Red Hat, MongoDB issues | ✅ built, running |
+| 03_split_baselines | Time-based split, 385-ticket test sets, I1 baselines (RQ1), risk–coverage (RQ2), rule preview (RQ4) | ✅ |
+| 04+ | Language-model instruments, RQ2 cascade, RQ3 context, RQ4 replay, allocation tree | in progress |
 
 ## Repository layout
 ```
-├── data/                 README, data dictionary (raw data downloaded, not committed)
-├── notebooks/            numbered analysis notebooks
-├── src/capstone/         data loaders, instruments, router, compiler, evaluation
-├── configs/prices.yaml   model prices used for commercial-equivalent cost
-├── results/              tables and figures produced by the notebooks
+├── data/raw/             ServiceNow (zip) and Rabobank BPI 2014 (4 CSV files), as published
+├── data/processed/       incident-level Parquet tables and held-out test-set ids
+├── notebooks/            numbered analysis notebooks (Colab)
+├── src/capstone/         data loaders, Jira dump reader, instruments, router, compiler, evaluation
+├── configs/prices.yaml   dated price table for cost of ownership
+├── results/              tables (CSV, summaries) and figures produced by the notebooks
 └── requirements.txt
 ```
 
 ## Cost policy
-No paid API spending: small and fine-tuned models run on Google Colab; commercial models are called through existing subscriptions (Claude plan, Gemini API free tier), with several tickets per request.
+Core experiments use Google Colab, open models and the Gemini API free tier. Paid calls (Jev API; a small Claude API cross-check sample) are estimated and approved before each run, and raw responses are stored.
 
 ## Licence
 Code: MIT. Data: the licence of each source dataset applies; cite the sources listed above.

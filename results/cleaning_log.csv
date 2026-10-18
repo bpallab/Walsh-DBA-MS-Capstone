@@ -1,0 +1,14 @@
+Issue,Dataset,Variables Affected,Detection Method,Count,% of records,Treatment Applied,Rationale
+Duplicates,ServiceNow,all columns,Exact duplicate event rows,0,0.0,Dropped,Repeated audit rows add no information
+Missing values,ServiceNow,"all 36 columns (""?"" codes)","Cells coded ""?"" (unknown) in the source",894597,17.54,Read as missing; per-variable rule in data dictionary; caused_by (100%) and cmdb_ci (99.7%) dropped,Follows dataset documentation; % is of all cells
+Missing values,ServiceNow,resolved_at,Null after reduction,1556,6.24,Resolution time left missing; incident kept,Incident still valid for D1/D5
+Missing values,ServiceNow,assignment_group,Null after reduction,2157,8.66,Excluded from D5 only,No ground truth for assignment
+Impossible values,ServiceNow,resolved_at < opened_at,Negative duration,0,0.0,Resolution time set to missing,Timestamp error
+Outliers,ServiceNow,resolution_hours,IQR rule (> Q3 + 3·IQR = 593 h),1449,5.82,Kept; flagged; medians reported,"Long-running incidents are real, not errors"
+Duplicates,Rabobank,incident_id,Duplicate keys,202,0.43,Kept first record,One row per incident
+Format errors,Rabobank,Detail_Incident.csv,Mixed date formats and comma separator after re-saving in Excel,46809,100.0,File re-downloaded from source; never opened in Excel,Excel swapped day/month and dropped fields
+Format errors,Rabobank,handle_time_hours,Decimal comma (European format),46605,99.56,"Parsed with decimal="",""",Correct numeric values
+Missing values,Rabobank,open_time / resolved_time,Null or unparseable,1983,4.24,Resolution time not computed,Incident still valid for D1/D5
+Missing values,Rabobank,closure_code,Null,663,1.42,"Set to ""unknown""; excluded from D4",No ground truth
+Impossible values,Rabobank,resolved < opened,Negative duration,0,0.0,Resolution time set to missing,Timestamp error
+Outliers,Rabobank,resolution_hours,IQR rule (> Q3 + 3·IQR = 379 h),2884,6.16,Kept; flagged; medians reported,Long-running incidents are real

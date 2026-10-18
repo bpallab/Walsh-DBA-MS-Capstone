@@ -1,0 +1,8 @@
+,ServiceNow,Rabobank
+incidents,24918.0,46809.0
+mean friction count (teams per incident),1.94,2.13
+% incidents handled by >1 team,45.63,40.88
+% knowledge-base used,14.25,
+% SLA met,63.42,
+median resolution hours,22.1,18.76
+% incidents linked to a change,,1.2

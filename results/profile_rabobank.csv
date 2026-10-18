@@ -1,0 +1,74 @@
+dataset,variable,dtype,missing_pct,distinct,example
+Rabobank incident,ci_name_aff,str,0.4,3019,SUB000508
+Rabobank incident,ci_type_aff,str,0.4,13,subapplication
+Rabobank incident,ci_subtype_aff,str,0.4,65,Web Based Application
+Rabobank incident,service_component_wbs_aff,str,0.4,274,WBS000162
+Rabobank incident,incident_id,str,0.4,46606,IM0000004
+Rabobank incident,status,str,0.4,2,Closed
+Rabobank incident,impact,float64,0.4,5,4.0
+Rabobank incident,urgency,str,0.4,6,4
+Rabobank incident,priority,float64,0.4,5,4.0
+Rabobank incident,category,str,0.4,4,incident
+Rabobank incident,km_number,str,0.4,1825,KM0000553
+Rabobank incident,alert_status,str,0.4,1,closed
+Rabobank incident,n_reassignments,float64,0.4,41,26.0
+Rabobank incident,open_time,datetime64[us],0.4,46336,2012-02-05 13:32:57
+Rabobank incident,reopen_time,str,95.1,2282,02/12/2013 12:31:02
+Rabobank incident,resolved_time,datetime64[us],4.2,44603,2013-11-04 13:50:27
+Rabobank incident,close_time,datetime64[us],0.4,46376,2013-11-04 13:51:17
+Rabobank incident,handle_time_hours,float64,0.4,31376,3871.691111
+Rabobank incident,closure_code,str,1.4,14,Other
+Rabobank incident,n_related_interactions,float64,0.7,49,1.0
+Rabobank incident,related_interaction,str,0.4,43060,SD0000007
+Rabobank incident,n_related_incidents,float64,97.4,24,2.0
+Rabobank incident,n_related_changes,float64,98.8,4,1.0
+Rabobank incident,related_change,str,98.8,232,C00000056
+Rabobank incident,ci_name_cby,str,0.4,3652,SUB000508
+Rabobank incident,ci_type_cby,str,0.4,14,subapplication
+Rabobank incident,ci_subtype_cby,str,0.4,63,Web Based Application
+Rabobank incident,servicecomp_wbs_cby,str,0.4,275,WBS000162
+Rabobank interaction,ci_name_aff,str,0.0,4153,SBA000243
+Rabobank interaction,ci_type_aff,str,0.0,14,application
+Rabobank interaction,ci_subtype_aff,str,0.0,67,Server Based Application
+Rabobank interaction,service_comp_wbs_aff,str,0.0,289,WBS000125
+Rabobank interaction,interaction_id,str,0.0,147004,SD0000001
+Rabobank interaction,status,str,0.0,2,Closed
+Rabobank interaction,impact,int64,0.0,5,5
+Rabobank interaction,urgency,str,0.0,6,4
+Rabobank interaction,priority,int64,0.0,5,4
+Rabobank interaction,category,str,0.0,6,incident
+Rabobank interaction,km_number,str,0.0,2360,KM0000987
+Rabobank interaction,open_time_first_touch,datetime64[us],0.0,65848,2011-09-09 09:23:00
+Rabobank interaction,close_time,datetime64[us],0.0,64727,2014-02-14 09:05:00
+Rabobank interaction,closure_code,str,0.3,24,Other
+Rabobank interaction,first_call_resolution,str,0.0,2,N
+Rabobank interaction,handle_time_secs,int64,0.0,3064,239
+Rabobank interaction,related_incident,str,64.1,46088,IM0000001
+Rabobank incident_activity,incident_id,str,0.0,46616,IM0000004
+Rabobank incident_activity,datestamp,str,0.0,273401,07-01-2013 08:17:17
+Rabobank incident_activity,incidentactivity_number,str,0.0,466737,001A3689763
+Rabobank incident_activity,incidentactivity_type,str,0.0,39,Reassignment
+Rabobank incident_activity,assignment_group,str,0.0,242,TEAM0001
+Rabobank incident_activity,km_number,str,0.0,1825,KM0000553
+Rabobank incident_activity,interaction_id,str,0.0,46444,SD0000007
+Rabobank change,ci_name_aff,str,0.0,10193,HMD000002
+Rabobank change,ci_type_aff,str,0.0,13,hardware
+Rabobank change,ci_subtype_aff,str,0.0,74,MigratieDummy
+Rabobank change,service_component_wbs_aff,str,0.0,286,WBS000195
+Rabobank change,change_id,str,0.0,18000,C00000003
+Rabobank change,change_type,str,0.0,240,Release Type 11
+Rabobank change,risk_assessment,str,0.0,3,Minor Change
+Rabobank change,emergency_change,str,0.0,2,N
+Rabobank change,cab_approval_needed,str,0.0,2,N
+Rabobank change,planned_start,datetime64[us],0.0,11774,2012-08-30 07:00:00
+Rabobank change,planned_end,datetime64[us],0.1,8905,2013-12-26 00:00:00
+Rabobank change,scheduled_downtime_start,str,97.5,297,11-10-2013 9:00
+Rabobank change,scheduled_downtime_end,str,97.5,307,11-10-2013 15:00
+Rabobank change,actual_start,datetime64[us],10.8,13100,2013-12-18 14:00:00
+Rabobank change,actual_end,datetime64[us],10.8,13780,2013-12-18 16:15:00
+Rabobank change,requested_end_date,datetime64[us],0.0,6642,2012-06-01 00:00:00
+Rabobank change,change_record_open_time,datetime64[us],0.0,15066,2011-09-01 09:13:00
+Rabobank change,change_record_close_time,datetime64[us],0.0,15549,2013-12-18 16:16:00
+Rabobank change,originated_from,str,0.0,3,Problem
+Rabobank change,n_related_interactions,float64,100.0,2,5.0
+Rabobank change,n_related_incidents,float64,93.6,57,48.0

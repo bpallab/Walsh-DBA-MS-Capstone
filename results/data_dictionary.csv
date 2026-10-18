@@ -1,0 +1,41 @@
+Dataset,Variable Name,Definition,Datatype,Allowed Values/Range,Missing %,Missing Values Handling,Notes
+ServiceNow (incident level),number,Incident identifier,str,"24918 values (e.g., INC0000045, INC0000047, INC0000057)",0.0,Key; never missing,Unit of analysis = incident
+ServiceNow (incident level),incident_state,Workflow state at each event,str,Closed,0.0,Last event kept per incident,Event-to-incident reduction
+ServiceNow (incident level),category,Incident category (anonymised),str,"52 values (e.g., Category 42, Category 26, Category 53)",0.0,Rows with missing category excluded from D1 training,D1 target
+ServiceNow (incident level),subcategory,Incident subcategory (anonymised),str,"245 values (e.g., Subcategory 174, Subcategory 223, Subcategory 175)",0.0,"Kept as feature; missing = ""unknown""",D1 feature
+ServiceNow (incident level),u_symptom,Reported symptom (anonymised),str,"397 values (e.g., Symptom 491, Symptom 534, Symptom 116)",23.4,"Missing = ""unknown"" category",D1/D5 feature
+ServiceNow (incident level),impact,ITIL impact,str,"2 - Medium, 3 - Low, 1 - High",0.0,None missing,D1 feature
+ServiceNow (incident level),urgency,ITIL urgency,str,"2 - Medium, 3 - Low, 1 - High",0.0,None missing,D1 feature
+ServiceNow (incident level),priority,ITIL priority (from impact × urgency),str,"4 values (e.g., 3 - Moderate, 4 - Low, 2 - High)",0.0,None missing,D1 target (priority)
+ServiceNow (incident level),contact_type,Channel the incident arrived by,str,"5 values (e.g., Phone, Self service, Email)",0.0,None missing,Feature
+ServiceNow (incident level),location,Caller location (anonymised),str,"224 values (e.g., Location 204, Location 161, Location 143)",0.0,"Missing = ""unknown""",Feature
+ServiceNow (incident level),assignment_group,Support team assigned,str,"70 values (e.g., Group 70, Group 25, Group 39)",8.7,Rows missing group excluded from D5,D5 target
+ServiceNow (incident level),assigned_to,Resolver assigned (anonymised),str,"220 values (e.g., Resolver 13, Resolver 17, Resolver 194)",2.9,Not used as target (person-level),Privacy: not published beyond IDs
+ServiceNow (incident level),reassignment_count,Times the incident changed team,int64,0 to 27,0.0,None missing,Friction count = value + 1
+ServiceNow (incident level),reopen_count,Times reopened,int64,0 to 8,0.0,None missing,Quality signal
+ServiceNow (incident level),knowledge,Knowledge-base article used,bool,True / False,0.0,None missing,D3 ground truth
+ServiceNow (incident level),u_priority_confirmation,Priority confirmed by a person,bool,True / False,0.0,None missing,Human-confirmation signal (RQ4)
+ServiceNow (incident level),made_sla,SLA target met,bool,True / False,0.0,None missing,Outcome
+ServiceNow (incident level),opened_at,Time the incident was opened,datetime64[us],2016-02-29 to 2017-02-16,0.0,None missing,Time split; RQ4 windows
+ServiceNow (incident level),resolved_at,Time the incident was resolved,datetime64[us],2016-02-29 to 2017-02-17,6.2,Missing -> resolution time not computed,Outcome
+ServiceNow (incident level),closed_code,Closure code,str,"17 values (e.g., code 6, code 7, code 9)",0.4,"Missing = ""unknown""",D4 proxy
+ServiceNow (incident level),cmdb_ci,Configuration item,str,"47 values (e.g., cmdb_ci 49, cmdb_ci 31, cmdb_ci 14)",99.8,99.7% missing -> dropped,Not usable for graph
+ServiceNow (incident level),caused_by,Change that caused the incident,str,"CHG0000132, CHG0000097, CHG0001327",100.0,100% missing -> dropped,D6 not testable on ServiceNow
+ServiceNow (incident level),problem_id,Linked problem record,str,"244 values (e.g., Problem ID  2, Problem ID  14, Problem ID  190)",98.5,98.4% missing -> kept as flag,Graph link
+ServiceNow (incident level),rfc,Linked request for change,str,"174 values (e.g., CHG0000132, CHG0001230, CHG0000404)",99.3,99.3% missing -> kept as flag,Graph link
+Rabobank incidents,incident_id,Incident identifier,str,"46606 values (e.g., IM0000004, IM0000005, IM0000006)",0.4,Key; never missing,Unit of analysis = incident
+Rabobank incidents,ci_name_aff,Configuration item affected,str,"3019 values (e.g., SUB000456, SBA000263, SBA000607)",0.4,None missing,Graph node; D5/D6 feature
+Rabobank incidents,ci_type_aff,Type of configuration item,str,"13 values (e.g., application, subapplication, computer)",0.4,None missing,Feature
+Rabobank incidents,service_component_wbs_aff,Service component affected,str,"274 values (e.g., WBS000073, WBS000091, WBS000263)",0.4,None missing,Graph; D5 feature
+Rabobank incidents,impact,ITIL impact (1 high to 5 low),float64,1 to 5,0.4,Coerced to numeric,D1 feature
+Rabobank incidents,urgency,ITIL urgency,str,"6 values (e.g., 4, 5, 3)",0.4,Coerced to numeric,D1 feature
+Rabobank incidents,priority,ITIL priority,float64,1 to 5,0.4,Coerced to numeric,D1 target (priority)
+Rabobank incidents,category,Incident or request for information,str,"4 values (e.g., incident, request for information, complaint)",0.4,None missing,D1 target
+Rabobank incidents,km_number,Knowledge article used,str,"1825 values (e.g., KM0001106, KM0000940, KM0001444)",0.4,Missing = none used,D3 ground truth
+Rabobank incidents,n_reassignments,Times the incident changed team,float64,0 to 46,0.4,Missing -> 0,Friction count = value + 1
+Rabobank incidents,open_time,Time opened,datetime64[us],2012-02-05 to 2014-03-31,0.4,Parsed day-first; failures dropped,Time split
+Rabobank incidents,resolved_time,Time resolved,datetime64[us],2013-10-01 to 2014-03-31,4.2,Missing -> resolution time not computed,Outcome
+Rabobank incidents,closure_code,How the incident was closed,str,"14 values (e.g., Other, Software, User error)",1.4,"Missing = ""unknown""",D4 proxy
+Rabobank incidents,related_interaction,Service-desk contact linked,str,"43060 values (e.g., #MULTIVALUE, #N/B, SD0000007)",0.4,Missing = none,Graph link
+Rabobank incidents,related_change,Change recorded as related,str,"232 values (e.g., C00003013, C00014762, #MULTIVALUE)",98.8,Missing = none (98.8%),D6 ground truth
+Rabobank incidents,handle_time_hours,Total handling time,float64,0 to 4843.12,0.4,Decimal comma converted,Cost proxy

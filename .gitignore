@@ -1,0 +1,8 @@
+# Jira archive and its extracted subset are too large for GitHub (download via notebooks/02_jira_subset.ipynb)
+data/raw/jira/
+data/processed/jira/
+*.zip.part
+*.part
+__pycache__/
+.ipynb_checkpoints/
+.env

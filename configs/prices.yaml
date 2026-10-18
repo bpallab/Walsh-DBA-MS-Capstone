@@ -1,0 +1,11 @@
+# Published prices (USD per million tokens) used to report the commercial-equivalent
+# cost of each instrument. VERIFY and date-stamp before running experiments;
+# prices change often. Open-weight models on Colab are costed by GPU time instead.
+as_of: "TO BE FILLED ON FIRST RUN"
+models:
+  claude-haiku:   {input: null, output: null}
+  claude-sonnet:  {input: null, output: null}
+  gemini-flash:   {input: null, output: null}
+  jev:            {per_call: null}
+colab:
+  compute_unit_usd: null   # price per Colab compute unit on your plan

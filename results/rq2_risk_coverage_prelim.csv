@@ -1,0 +1,5 @@
+Dataset/decision,Accuracy % (all),Coverage % at 98% precision (automate),Coverage % at 90% precision (recommend),ECE
+ServiceNow D5,61.0,2.3,27.3,0.103
+ServiceNow D1,39.2,18.7,22.6,0.109
+Rabobank D5,29.4,6.8,10.6,0.231
+Rabobank D4,57.4,13.0,20.8,0.046

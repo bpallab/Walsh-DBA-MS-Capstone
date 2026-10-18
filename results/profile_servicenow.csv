@@ -1,0 +1,37 @@
+dataset,variable,dtype,missing_pct,distinct,example
+ServiceNow events,number,str,0.0,24918,INC0000045
+ServiceNow events,incident_state,str,0.0,9,New
+ServiceNow events,active,bool,0.0,2,True
+ServiceNow events,reassignment_count,int64,0.0,28,0
+ServiceNow events,reopen_count,int64,0.0,9,0
+ServiceNow events,sys_mod_count,int64,0.0,115,0
+ServiceNow events,made_sla,bool,0.0,2,True
+ServiceNow events,caller_id,str,0.0,5244,Caller 2403
+ServiceNow events,opened_by,str,3.4,207,Opened by  8
+ServiceNow events,opened_at,datetime64[us],0.0,19849,2016-02-29 01:16:00
+ServiceNow events,sys_created_by,str,37.5,185,Created by 6
+ServiceNow events,sys_created_at,datetime64[us],37.5,11552,2016-02-29 01:23:00
+ServiceNow events,sys_updated_by,str,0.0,846,Updated by 21
+ServiceNow events,sys_updated_at,datetime64[us],0.0,50664,2016-02-29 01:23:00
+ServiceNow events,contact_type,str,0.0,5,Phone
+ServiceNow events,location,str,0.1,224,Location 143
+ServiceNow events,category,str,0.1,58,Category 55
+ServiceNow events,subcategory,str,0.1,254,Subcategory 170
+ServiceNow events,u_symptom,str,23.3,525,Symptom 72
+ServiceNow events,cmdb_ci,str,99.7,50,cmdb_ci 31
+ServiceNow events,impact,str,0.0,3,2 - Medium
+ServiceNow events,urgency,str,0.0,3,2 - Medium
+ServiceNow events,priority,str,0.0,4,3 - Moderate
+ServiceNow events,assignment_group,str,10.0,78,Group 56
+ServiceNow events,assigned_to,str,19.4,234,Resolver 89
+ServiceNow events,knowledge,bool,0.0,2,True
+ServiceNow events,u_priority_confirmation,bool,0.0,2,False
+ServiceNow events,notify,str,0.0,2,Do Not Notify
+ServiceNow events,problem_id,str,98.4,252,Problem ID  2
+ServiceNow events,rfc,str,99.3,181,CHG0000404
+ServiceNow events,vendor,str,99.8,4,code 8s
+ServiceNow events,caused_by,str,100.0,3,CHG0000132
+ServiceNow events,closed_code,str,0.5,17,code 5
+ServiceNow events,resolved_by,str,0.2,216,Resolved by 149
+ServiceNow events,resolved_at,datetime64[us],2.2,18505,2016-02-29 11:29:00
+ServiceNow events,closed_at,datetime64[us],0.0,2707,2016-03-05 12:00:00
