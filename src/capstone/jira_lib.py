@@ -96,3 +96,77 @@ def stream_repo(zf, member, repo, writer_path, only_resolved=True, batch=20000, 
         t = pa.Table.from_pylist(rows, schema=SCHEMA); writer = writer or pq.ParquetWriter(writer_path, SCHEMA); writer.write_table(t)
     if writer: writer.close()
     return n_seen, n_kept
+
+
+# ---------------------------------------------------------------------------
+# mongodump --archive format reader (single-file dump, optionally gzipped)
+# Layout: magic 0x8199e26d | prelude header doc | collection-metadata docs | -1
+#         then blocks: namespace header {db, collection, EOF, CRC} | docs... | -1
+# ---------------------------------------------------------------------------
+import struct
+MAGIC = 0x8199e26d
+TERM = 0xFFFFFFFF
+
+def _open_archive(zf, member):
+    raw = zf.open(member)
+    head = raw.read(2); raw.close(); raw = zf.open(member)
+    fh = gzip.GzipFile(fileobj=raw) if head == b'\x1f\x8b' else raw
+    return io.BufferedReader(fh, buffer_size=4 << 20)
+
+def _read_doc(fh):
+    """Return (raw_bytes or None for terminator); raises EOFError at end."""
+    b = fh.read(4)
+    if len(b) < 4: raise EOFError
+    n = struct.unpack('<I', b)[0]
+    if n == TERM: return None
+    rest = fh.read(n - 4)
+    if len(rest) < n - 4: raise EOFError
+    return b + rest
+
+def archive_info(zf, member):
+    """Read only the prelude: tool/server versions and the list of collections."""
+    fh = _open_archive(zf, member)
+    magic = struct.unpack('<I', fh.read(4))[0]
+    if magic != MAGIC: raise ValueError(f'not a mongodump archive (magic {magic:#x})')
+    header = bson.decode(_read_doc(fh))
+    cols = []
+    while True:
+        d = _read_doc(fh)
+        if d is None: break
+        m = bson.decode(d); cols.append({'db': m.get('db'), 'collection': m.get('collection'), 'size': m.get('size')})
+    return header, cols
+
+def stream_archive(zf, member, repos, out_dir, only_resolved=True, batch=20000, log=print):
+    """One pass over the archive; flatten documents of the wanted collections."""
+    fh = _open_archive(zf, member)
+    assert struct.unpack('<I', fh.read(4))[0] == MAGIC
+    _read_doc(fh)                                   # prelude header
+    while _read_doc(fh) is not None: pass           # collection metadata
+    wanted = {r.lower(): r for r in repos}
+    writers, rows, seen, kept = {}, {r: [] for r in repos}, {r: 0 for r in repos}, {r: 0 for r in repos}
+    current, expect_header, n_blocks = None, True, 0
+    def flush(r):
+        if rows[r]:
+            t = pa.Table.from_pylist(rows[r], schema=SCHEMA)
+            if r not in writers: writers[r] = pq.ParquetWriter(f'{out_dir}/{r}.parquet', SCHEMA)
+            writers[r].write_table(t); rows[r] = []
+    try:
+        while True:
+            d = _read_doc(fh)
+            if d is None: expect_header = True; continue
+            if expect_header:
+                h = bson.decode(d); n_blocks += 1
+                current = wanted.get(str(h.get('collection', '')).lower()); expect_header = False
+                continue
+            if current is None: continue            # skip documents of other collections cheaply
+            doc = bson.decode(d); seen[current] += 1
+            if only_resolved and not g(doc, 'fields.resolution'): continue
+            rows[current].append(flatten(doc, current)); kept[current] += 1
+            if len(rows[current]) >= batch:
+                flush(current)
+                if kept[current] % 100000 < batch: log(f'  {current}: seen {seen[current]:,}, kept {kept[current]:,}')
+    except EOFError:
+        pass
+    for r in repos: flush(r)
+    for w in writers.values(): w.close()
+    return {r: {'issues_in_dump': seen[r], 'resolved_kept': kept[r]} for r in repos}, n_blocks
