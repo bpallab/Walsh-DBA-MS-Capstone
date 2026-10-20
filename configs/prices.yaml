@@ -3,8 +3,8 @@
 # prices change often. Open-weight models on Colab are costed by GPU time instead.
 as_of: "TO BE FILLED ON FIRST RUN"
 models:
-  claude-haiku:   {input: null, output: null}
-  claude-sonnet:  {input: null, output: null}
+  frontier-llm-medium: {input: null, output: null}
+  frontier-llm-large:  {input: null, output: null}
   gemini-flash:   {input: null, output: null}
   jev:            {per_call: null}
 colab:

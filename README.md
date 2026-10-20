@@ -52,7 +52,7 @@ The ServiceNow and Rabobank files are included in full under `data/raw/` (both p
 ```
 
 ## Cost policy
-Core experiments use Google Colab, open models and the Gemini API free tier. Paid calls (Jev API; a small Claude API cross-check sample) are estimated and approved before each run, and raw responses are stored.
+Core experiments use Google Colab, open models and the Gemini API free tier. Paid calls (Jev API; a small commercial frontier-model cross-check sample) are estimated and approved before each run, and raw responses are stored.
 
 ## Licence
 Code: MIT. Data: the licence of each source dataset applies; cite the sources listed above.
