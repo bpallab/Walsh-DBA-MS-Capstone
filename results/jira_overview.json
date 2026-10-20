@@ -1,0 +1,46 @@
+{
+ "rows": 1269621,
+ "columns": 24,
+ "repositories": {
+  "Apache": 833741,
+  "RedHat": 313510,
+  "MongoDB": 122370
+ },
+ "projects": 891,
+ "first": "0010-04-03",
+ "last": "2022-01-05",
+ "duplicate_link_pct": 5.7,
+ "resolution_duplicate_pct": 5.0,
+ "with_components_pct": 70.6,
+ "with_assignee_pct": 80.4,
+ "median_resolution_h": 334.2,
+ "assignee_changed_pct": 49.7,
+ "priority_changed_pct": 8.2,
+ "type_changed_pct": 5.2,
+ "component_changed_pct": 14.9,
+ "issuetype_classes": 91,
+ "priority_classes": 27,
+ "top_issuetypes_pct": {
+  "Bug": 50.0,
+  "Improvement": 17.2,
+  "Task": 12.0,
+  "Sub-task": 7.3,
+  "New Feature": 4.2
+ },
+ "missing_pct": {
+  "issuetype": 0.0,
+  "priority": 1.8,
+  "created": 0.0,
+  "resolutiondate": 0.1,
+  "assignee": 19.6
+ },
+ "longest_dense_run_months": {
+  "Apache": 240,
+  "MongoDB": 139,
+  "RedHat": 205
+ },
+ "split": {
+  "train_until": "2017-11-27",
+  "test_from": "2019-03-02"
+ }
+}

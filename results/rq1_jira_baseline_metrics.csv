@@ -1,0 +1,7 @@
+Dataset,Decision,Model,Train rows,Test rows,Classes,Accuracy %,95% CI (Wilson),Macro-F1,Train+predict s
+Jira,D1 classify (issue type),Majority class,31271,385,11 (top 10 + other),33.2,28.7–38.1,0.045,0.0
+Jira,D1 classify (issue type),I1 TF-IDF + logistic regression,31271,385,11 (top 10 + other),46.0,41.1–51.0,0.184,18.7
+Jira,D1 classify (issue type),I1 TF-IDF + XGBoost,31271,385,11 (top 10 + other),38.7,34.0–43.7,0.126,231.1
+Jira,D1 classify (priority),Majority class,30495,385,11 (top 10 + other),56.1,51.1–61.0,0.08,0.0
+Jira,D1 classify (priority),I1 TF-IDF + logistic regression,30495,385,11 (top 10 + other),57.9,52.9–62.8,0.173,21.4
+Jira,D1 classify (priority),I1 TF-IDF + XGBoost,30495,385,11 (top 10 + other),63.4,58.5–68.0,0.145,195.8
