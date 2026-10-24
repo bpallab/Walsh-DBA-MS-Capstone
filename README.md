@@ -42,8 +42,10 @@ The ServiceNow and Rabobank files are included in full under `data/raw/` (both p
 | 04b_jira_d2_d6 | Jira duplicate (D2) and cause (D6) test sets and I1 search, low-memory | ✅ |
 | 05_i2_i3_context | I2 embeddings and similar-ticket search, I3 knowledge graph, hybrid search, RQ3 context files (T4 GPU) | ✅ |
 | 06_i5_i6_slm | I5 Qwen3-4B as is and I6 LoRA fine-tune; RQ3 context runs (L4 GPU) | ✅ |
+| 07_i8_open_model | I8 self-hosted Qwen3-14B (Apache 2.0), same prompts as notebook 06 (L4 GPU) | ✅ |
+| 07b_api_instruments | I7 Gemini Flash, DeepSeek and the Claude Opus 5.5 frontier benchmark through a Replit gateway (CPU) | ✅ |
 | 08_i4_jev | Instrument I4 (Jev): RQ1 test sets, consistency check, re-ranking, bulk run for RQ2/RQ4 | ✅ |
-| 07, 09–10 | Language-model instruments, RQ2 cascade, RQ3 context, RQ4 replay, allocation tree | in progress |
+| 09–10 | Language-model instruments, RQ2 cascade, RQ3 context, RQ4 replay, allocation tree | in progress |
 
 ## Repository layout
 ```
