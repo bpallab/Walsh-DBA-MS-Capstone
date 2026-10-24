@@ -39,6 +39,7 @@ The ServiceNow and Rabobank files are included in full under `data/raw/` (both p
 | 02_jira_subset | Download the Jira dump and extract Apache, Red Hat, MongoDB issues | ✅ built, running |
 | 03_split_baselines | Time-based split, 385-ticket test sets, I1 baselines (RQ1), risk–coverage (RQ2), rule preview (RQ4) | ✅ |
 | 04_jira_testsets_i1 | Jira test sets for D1, D2, D4, D5, D6 and full I1 baseline (TF-IDF classifiers and lexical search) | ✅ |
+| 04b_jira_d2_d6 | Jira duplicate (D2) and cause (D6) test sets and I1 search, low-memory | ✅ |
 | 08_i4_jev | Instrument I4 (Jev): RQ1 test sets, consistency check, re-ranking, bulk run for RQ2/RQ4 | ✅ |
 | 05–07 | Language-model instruments, RQ2 cascade, RQ3 context, RQ4 replay, allocation tree | in progress |
 
